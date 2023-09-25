@@ -4,7 +4,7 @@ search_box = "//input[@id='twotabsearchtextbox']"
 filtered_product_list = "//span[@class='a-size-medium a-color-base a-text-normal']"
 searched_value = "//span[@class='a-color-state a-text-bold']"
 add_to_cart_button = "//input[@id='add-to-cart-button']"
-rating_box = "//span[@class='a-list-item']//span[@class='a-icon-alt']"
+
 
 
 def search_product(page, product_name):
@@ -13,17 +13,7 @@ def search_product(page, product_name):
 
 
 def filtering_product(page, rating_value):
-    rating_list = page.locator(rating_box).all()
-    if rating_value >= 4:
-        rating_list[0].click()
-    elif rating_value >= 3:
-        rating_list[1].click()
-    elif rating_value >= 2:
-        rating_list[2].click()
-    elif rating_value >= 1:
-        rating_list[3].click()
-    else:
-        raise Exception('Invalid Choice')
+    click(page, f"//section[@aria-label='{int(rating_value)} Stars & Up']")
 
 
 def adding_to_cart(page, number_of_product):

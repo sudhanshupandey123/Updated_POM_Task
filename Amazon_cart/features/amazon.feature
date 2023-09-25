@@ -10,3 +10,4 @@ Feature: Amazon Page
       | product_name  | rating | product_count |
       | HP Laptop     | 4      | 4             |
       | Lenovo Laptop | 3      | 2             |
+
