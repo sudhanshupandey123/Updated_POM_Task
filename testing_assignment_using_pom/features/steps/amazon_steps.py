@@ -1,7 +1,6 @@
 from behave import when, then, given
-from all_methods import search_product, adding_to_cart, filtering_product
+from amazon_task_methods import search_product, adding_to_cart, filtering_product
 from common_ui_actions import click, get_text_value
-import time
 
 cart_subtotal = "//*[@id='sc-subtotal-amount-buybox']/child::span"
 cart_button = "//span[@id='nav-cart-count']"
