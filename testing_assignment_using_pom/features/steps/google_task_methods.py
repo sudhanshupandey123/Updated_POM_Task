@@ -41,7 +41,7 @@ def extract_information(page):
     except:
         information['Review'] = None
     try:
-        url = str(page.url)
+        url = page.url
         filtering_lat_and_long = re.search('@\d+\S{1}\d+,\d+\S{1}\d+', url)
         information['Long_and_Lat'] = filtering_lat_and_long.group()
         information['Long_and_Lat'] = information['Long_and_Lat'].replace('@', '')
