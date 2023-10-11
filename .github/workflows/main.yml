@@ -20,7 +20,7 @@ jobs:
         
      - name: Amazon tests
        run: |
-         ./testing_assignment_using_pom/features/amazon.feature
+         git update-index --chmod=+x ./testing_assignment_using_pom/features/amazon.feature
         
      - name: Company tests 
        run: |
