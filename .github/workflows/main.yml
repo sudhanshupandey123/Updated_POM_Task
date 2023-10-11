@@ -20,14 +20,14 @@ jobs:
         
      - name: Amazon tests
        run: |
-        git update-index --chmod=+x ./testing_assignment_using_pom/features/behave amazon.feature
+         ./testing_assignment_using_pom/features/amazon.feature
         
      - name: Company tests 
        run: |
-         ./testing_assignment_using_pom/features/behave company.feature
+         ./testing_assignment_using_pom/features/company.feature
 
      - name: Map tests 
        run: |
-         ./testing_assignment_using_pom/features/behave google_map.feature
+         ./testing_assignment_using_pom/features/google_map.feature
          
      
