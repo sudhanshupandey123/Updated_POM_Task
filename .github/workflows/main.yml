@@ -18,7 +18,16 @@ jobs:
         python -m pip install behave
         python -m pip install playwright
         
-     - name: Run tests
+     - name: Amazon tests
        run: |
-        git update-index --chmod=+x ./Amazon_Cart/Feature/amazonfeature.feature
+        git update-index --chmod=+x ./testing_assignment_using_pom/features/behave amazon.feature
+        
+     - name: Company tests 
+       run: |
+         ./testing_assignment_using_pom/features/behave company.feature
+
+     - name: Map tests 
+       run: |
+         ./testing_assignment_using_pom/features/behave google_map.feature
+         
      
