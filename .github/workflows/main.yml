@@ -1,6 +1,7 @@
 name: first workflow
 
 on: push
+permissions: read-all
 
 jobs:
   build:
@@ -21,7 +22,7 @@ jobs:
           
      - name: Amazon tests
        run: |
-          git update-index --chmod=+x ./testing_assignment_using_pom/features/runner.py
+          ./testing_assignment_using_pom/features/runner.py
         
      
 
