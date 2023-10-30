@@ -19,10 +19,11 @@ jobs:
         python -m pip install behave
         python -m pip install playwright
         python -m pip install allure-pytest
+        python -m pip install allure-behave
           
      - name: Amazon tests
        run: |
-          ./testing_assignment_using_pom/features/runner.py
+          ./testing_assignment_using_pom/features/python runner.py
         
      
 
