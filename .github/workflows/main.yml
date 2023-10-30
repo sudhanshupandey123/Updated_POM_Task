@@ -21,6 +21,7 @@ jobs:
         
      - name: Amazon tests
        run: |
+         git update-index --chmod=+x
             
         
      - name: Amazon tests
