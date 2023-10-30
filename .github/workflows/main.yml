@@ -23,7 +23,7 @@ jobs:
           
      - name: Amazon tests
        run: |
-          ./testing_assignment_using_pom/features/python runner.py
+          python runner.py
         
      
 
