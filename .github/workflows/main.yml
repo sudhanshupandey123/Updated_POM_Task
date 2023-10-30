@@ -18,15 +18,10 @@ jobs:
         python -m pip install behave
         python -m pip install playwright
         python -m pip install allure-pytest
-        
+          
      - name: Amazon tests
        run: |
-         git update-index --chmod=+x
-            
-        
-     - name: Amazon tests
-       run: |
-            ./testing_assignment_using_pom/features/runner.py
+          git update-index --chmod=+x ./testing_assignment_using_pom/features/runner.py
         
      
 
