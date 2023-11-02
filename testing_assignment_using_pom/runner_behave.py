@@ -6,20 +6,22 @@ from behave.__main__ import run_behave
 from behave.configuration import Configuration
 from behave.tag_expression import TagExpression
 
-def main():
 
+
+def main(Project_Root):
+    PROJECT_ROOT=Project_Root
     load_dotenv()
     my_details=os.getenv("ENVIRONMENT")
     print(my_details)
 
 
-    reports = "C://Users//a98016117//PycharmProjects//Updated_POM_Task//testing_assignment_using_pom" +"/"+ os.getenv("REPORTS_FOLDER")
+    reports = PROJECT_ROOT +"/"+ os.getenv("REPORTS_FOLDER")
     reports = os.path.normpath(f'"{reports}"')
 
     feature_order = '" "'.join(
-        os.path.join("C://Users//a98016117//PycharmProjects//Updated_POM_Task//testing_assignment_using_pom", feature_path.strip())
+        os.path.join(PROJECT_ROOT, feature_path.strip())
         for feature_path in os.getenv("FEATURE_ORDER").split(",")
-        if Path("C://Users//a98016117//PycharmProjects//Updated_POM_Task//testing_assignment_using_pom" +"/"+ feature_path.strip()).exists()
+        if Path(PROJECT_ROOT +"/"+ feature_path.strip()).exists()
     )
     feature_order = os.path.normpath(f'"{feature_order}"')
     print(feature_order)
@@ -39,4 +41,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    Project_Root="C://Users//a98016117//PycharmProjects//Updated_POM_Task//testing_assignment_using_pom"
+    main(Project_Root)
