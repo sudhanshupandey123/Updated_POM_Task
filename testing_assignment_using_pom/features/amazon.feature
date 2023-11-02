@@ -1,3 +1,4 @@
+@Phase1
 Feature: Amazon Page
 
   Scenario Outline: Add To Cart

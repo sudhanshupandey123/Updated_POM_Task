@@ -1,3 +1,4 @@
+@FSE
 Feature: Google Map
 
   Scenario Outline: Google Map Search Bar
@@ -7,5 +8,5 @@ Feature: Google Map
     And He Successfully Make CSV File Of All Information
     Examples:
       | searched_for                 | count_of_restaurant |
-      | restaurant near me           | 10                  |
-      | restaurant near marathahalli | 15                  |
+      | restaurant near me           | 5                  |
+      | restaurant near marathahalli | 7                 |

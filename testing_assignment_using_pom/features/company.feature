@@ -1,3 +1,4 @@
+@Desktop
 Feature: Company Details
 
   Scenario Outline: Extracting Company Details
