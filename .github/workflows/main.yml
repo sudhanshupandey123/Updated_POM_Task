@@ -1,83 +1,29 @@
-# This is a basic workflow to help you get started with Actions
----
-name: CI
+name: first workflow
 
-# Controls when the workflow will run
-on:
- # Triggers the workflow on push or pull request events but only for the "main" branch
+on: 
  push:
-   branches: ["main"]
- pull_request:
-   branches: ["main"]
- schedule:
-   - cron: "0 0 * * *"
-   - cron: "0 3 * * 6"
+   branches: amazon_pom_task
+      - 
 
- # Allows you to run this workflow manually from the Actions tab
- workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
- # This workflow contains a single job called "build"
- playwright:
-   name: "Playwright Tests"
-   runs-on: ubuntu-latest
-   container:
-     image: mcr.microsoft.com/playwright:v1.29.1-focal
-   steps:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
      - uses: actions/checkout@v3
-     - name: Set up Python
-       uses: actions/setup-python@v4
+     - name: Set up Python ${{ matrix.python-version }}
+       uses: actions/setup-python@v3
        with:
-         python-version: "3.10.6"
-     - name: Install Poppler-utils
-       run: apt-get update && apt-get install -y poppler-utils
-     - name: Setup Poetry
+        python-version: ${{ matrix.python-version }}
+     - name: Install dependencies
        run: |
-         curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py | python3.10
-         python3.10 -m pip --version
-         python3.10 -m pip install --upgrade pip
-         python3.10 -m pip install poetry
-         python3.10 -m poetry install
-         pwd
-     - name: Run behave tests
-       if: always()
-       run: poetry run python run_behave.py
-       continue-on-error: true
-
-     - name: Run Load-test, scheduled on Sat
-       if: github.event.schedule == '0 3 * * 6'
+        python -m pip install --upgrade pip
+        python -m pip install behave
+        python -m pip install playwright
+        
+     - name: Run tests
        run: |
-         sed -i "s|TAGS=.*|TAGS=Load-test|" .env
-         poetry run python run_behave.py
-       continue-on-error: true
-
-#      - name: Copy PDF baseline files
-#        uses: dmnemec/copy_file_to_another_repo_action@main
-#        env:
-#          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          source_file: "PDF_compiler"
-#          destination_repo: ${{ github.repository }}
-#          destination_branch: "PDF_Baselines"
-#          destination_folder: ${{ github.run_number }}
-#          user_email: "praveen.a.kumar@external.atlascopco.com"
-#          user_name: "Praveenkumar-95"
-#          commit_message: "Copy PDF baseline files"
-
-     # - name: Copy Behave log files
-     #   uses: dmnemec/copy_file_to_another_repo_action@main
-     #   env:
-     #     API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
-     #   with:
-     #     source_file: "reports/behave.log"
-     #     destination_repo: ${{ github.repository }}
-     #     destination_branch: "behave-logs"
-     #     destination_folder: ${{ github.run_number }}
-     #     user_email: "manoj.patil@atlascopco.com"
-     #     user_name: "manojatlas"
-     #     commit_message: "Behave log file for build"
-
+         python runner_behave.py
      - name: Get Allure history
        uses: actions/checkout@v3
        if: always()
