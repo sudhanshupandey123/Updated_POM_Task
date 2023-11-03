@@ -20,6 +20,7 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install behave
         python -m pip install playwright
+        python -m pip install allure-behave
         
      - name: Run tests
        run: |
