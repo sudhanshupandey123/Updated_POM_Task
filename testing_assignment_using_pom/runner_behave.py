@@ -1,5 +1,4 @@
 import os
-import utils
 from pathlib import Path
 from dotenv import load_dotenv
 from behave.__main__ import run_behave
@@ -11,10 +10,6 @@ from behave.tag_expression import TagExpression
 def main(Project_Root):
     PROJECT_ROOT=Project_Root
     load_dotenv()
-    my_details=os.getenv("ENVIRONMENT")
-    print(my_details)
-
-
     reports = PROJECT_ROOT +"/"+ os.getenv("REPORTS_FOLDER")
     reports = os.path.normpath(f'"{reports}"')
 
@@ -24,16 +19,12 @@ def main(Project_Root):
         if Path(PROJECT_ROOT +"/"+ feature_path.strip()).exists()
     )
     feature_order = os.path.normpath(f'"{feature_order}"')
-    print(feature_order)
 
     arguments = (
         f"{feature_order} -f allure_behave.formatter:AllureFormatter -o {reports}"
         # f"{stop_fail} --no-skipped -f plain {tags_option} --no-capture "
         # f"--no-capture-stderr --no-logcapture "
     )
-
-    print(arguments)
-    # log.error(arguments)
     configuration = Configuration(arguments)
 
     for i in range(1):
